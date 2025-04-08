@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 function Counter() {
   const [count, setCount] = useState(0);
 
-  // 여기에 useEffect 작성
   useEffect(() => {
-    console.log("count 변경됨");
+    // 여기에 조건과 로그 출력 작성
+    if (count >= 3) console.log("경고! count가 높아요!");
+    return () => {
+      // 여기에 정리할 작업 작성
+    };
   }, [count]);
   return (
     <div>
