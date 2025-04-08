@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 
-function Counter() {
-  const [count, setCount] = useState(0);
+function FetchExample() {
+  const [shouldFetch, setShouldFetch] = useState(false);
 
   useEffect(() => {
-    // 여기에 조건과 로그 출력 작성
-    if (count >= 3) console.log("경고! count가 높아요!");
-    return () => {
-      // 여기에 정리할 작업 작성
-      if (count >= 3) {
-        console.log("정리중...");
-      }
-    };
-  }, [count]);
+    if (!shouldFetch) return;
+
+    console.log("📡 데이터 불러오는 중...");
+
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("✅ 응답 도착:", data);
+      });
+  }, [shouldFetch]);
+
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>증가</button>
+      <button onClick={() => setShouldFetch(true)}>데이터 가져오기</button>
     </div>
   );
 }
 
-export default Counter;
+export default FetchExample;
