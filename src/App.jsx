@@ -8,6 +8,9 @@ function Counter() {
     if (count >= 3) console.log("경고! count가 높아요!");
     return () => {
       // 여기에 정리할 작업 작성
+      if (count >= 3) {
+        console.log("정리중...");
+      }
     };
   }, [count]);
   return (
