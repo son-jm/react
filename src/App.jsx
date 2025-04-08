@@ -21,8 +21,9 @@ function TimerComponent() {
   return (
     <div>
       <h1>{isRunning ? "타이머 실행 중" : "타이머 멈춤"}</h1>
-      <button onClick={() => setIsRunning(false)}>멈추기</button>
-      <button onClick={() => setIsRunning(true)}>다시 시작</button>
+      <button onClick={() => setIsRunning((a) => !a)}>
+        {isRunning ? "멈추기" : "다시 시작"}
+      </button>
     </div>
   );
 }
