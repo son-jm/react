@@ -12,6 +12,9 @@ function FetchExample() {
       .then((res) => res.json())
       .then((data) => {
         console.log("✅ 응답 도착:", data);
+      })
+      .finally(() => {
+        setShouldFetch(false);
       });
   }, [shouldFetch]);
 
